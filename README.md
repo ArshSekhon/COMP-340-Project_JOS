@@ -95,7 +95,7 @@ Good knowledge of assembly is required to complete Lab 1 for this project as it 
 ##### Assembly: Hello World
 This is basic assembly code that just prints "Hello World!" to the screen (See reference: Assembly Tutorial).
 
-**Commands to assemble, link and run this file:**
+**Commands to assemble, link and run this file (Linux only):**
 1. cd into examples folder.
 2. Execute ``mkdir bin``
 3. Assemble the program by executing ``nasm -f elf helloworld.asm -o ./bin/helloworld.o``
