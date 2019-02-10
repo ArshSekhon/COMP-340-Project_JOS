@@ -99,7 +99,7 @@ This is basic assembly code that just prints "Hello World!" to the screen (See r
 1. cd into examples folder.
 2. Execute ``mkdir bin``
 3. Assemble the program by executing ``nasm -f elf helloworld.asm -o ./bin/helloworld.o``
-4. Link the object file to create executable execute ``ld -m elf_i386 -s -o helloworld helloworld.o``
+4. Link the object file to create executable execute ``ld -m elf_i386 -s -o ./bin/helloworld ./bin/helloworld.o``
 5. Execute the executable by running ``./bin/helloworld``
 
 ##### Barebone Bootloader (/example/bootloader.asm)
