@@ -8,12 +8,12 @@
 <li><strong>QEMU:</strong> It is an open source virtual machine monitor. We will be using this to run JOS.</li>
 <li><strong>Compiler Toolchain:</strong> We would also need compiler toolchain. A compiler toolchain consists of various different programs including C compiler, assemblers and linker. We need it to convert the code written in assembly and C to machine language.</li>
 </ol>
-<h5><a id="Check_if_you_have_tools_installed_10"></a>Check if you have tools installed:</h5>
+<h5><a id="Checked_if_I_had_tools_installed_10"></a>Checked if I had tools installed:</h5>
 <ol>
 <li>Execute <code>objdump -i</code> and the second line should include <code>elf32-i386</code>.</li>
 <li>Try executing <code>gcc -v</code> and it should run successfully.</li>
 </ol>
-<h5><a id="Installing_Required_tools_14"></a>Installing Required tools:</h5>
+<h5><a id="Installed_Required_tools_14"></a>Installed Required tools:</h5>
 <p>If the commands above do not give the desired output then you can install them using following commands:</p>
 <p><strong>Linux:</strong></p>
 <pre><code>sudo apt-get install -y build-essential gdb
@@ -30,17 +30,17 @@ brew install qemu
 <h4><a id="Assembly_NASM_35"></a>Assembly: NASM</h4>
 <p>Good knowledge of assembly is required to complete Lab 1 for this project as it focuses on getting the JOS to boot by writing code for boot loader.</p>
 <h5><a id="Assembly_Hello_World_examplehelloworldasm_38"></a>Assembly: Hello World (/example/helloworld.asm)</h5>
-<p>This is basic assembly code that just prints “Hello World!” to the screen (See reference: Assembly Tutorial).</p>
+<p>I wrote this is basic assembly code that just prints “Hello World!” to the screen (See reference: Assembly Tutorial).</p>
 <p><strong>Commands to assemble, link and run this file (Linux only):</strong></p>
 <ol>
 <li>cd into examples folder.</li>
 <li>Execute <code>mkdir bin</code></li>
 <li>Assemble the program by executing <code>nasm -f elf helloworld.asm -o ./bin/helloworld.o</code></li>
-<li>Link the object file to create executable execute <code>ld -m elf_i386 -s -o helloworld helloworld.o</code></li>
+<li>Link the object file to create executable execute <code>ld -m elf_i386 -s -o ./bin/helloworld ./bin/helloworld.o</code></li>
 <li>Execute the executable by running <code>./bin/helloworld</code></li>
 </ol>
 <h5><a id="Barebone_Bootloader_examplebootloaderasm_48"></a>Barebone Bootloader (/example/bootloader.asm)</h5>
-<p>I continue to work on the bootloader code that we wrote in our second class for COMP 340 and have developed this barebone bootloader that just prints hello world on boot.</p>
+<p>I continued to work on the bootloader code that we wrote in our second class for COMP 340 and have developed this barebone bootloader that just prints hello world on boot.</p>
 <p><strong>Problem Faced:</strong> Understanding the code was bit of a challenge as it was bit different from what we did cover in COMP 256.<br>
 <strong>Solution:</strong> OS Dev and Stack Overflow were a great reasource that really helped me understand how boot loader code worked.</p>
 <p><strong>Commands to create binary and boot the computer off that binary:</strong></p>
@@ -53,7 +53,7 @@ brew install qemu
 <h4><a id="C_Language_61"></a>C Language</h4>
 <p>Majority of JOS project is written in C. So there is no doubt that C is of great significance for this project.</p>
 <h5><a id="C_Hello_World_examplehelloworldc_64"></a>C: Hello World (/example/helloworld.c)</h5>
-<p>This is a simple Hello World application. It just prints “Hello World!” to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.</p>
+<p>I wrote a simple Hello World application. It just prints “Hello World!” to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.</p>
 <p><strong>Commands to compile and run this project (Linux Only):</strong></p>
 <ol>
 <li>cd into examples folder.</li>

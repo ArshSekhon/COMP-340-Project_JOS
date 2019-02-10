@@ -64,11 +64,11 @@ For now we will need following tools:
 1. **QEMU:** It is an open source virtual machine monitor. We will be using this to run JOS.
 2. **Compiler Toolchain:** We would also need compiler toolchain. A compiler toolchain consists of various different programs including C compiler, assemblers and linker. We need it to convert the code written in assembly and C to machine language.
 
-##### Check if you have tools installed:
+##### Checked if I had tools installed:
 1. Execute ``objdump -i`` and the second line should include ``elf32-i386``.
 2. Try executing ``gcc -v`` and it should run successfully.
 
-##### Installing Required tools:
+##### Installed Required tools:
 If the commands above do not give the desired output then you can install them using following commands:
 
 **Linux:**
@@ -93,7 +93,7 @@ brew install qemu
 Good knowledge of assembly is required to complete Lab 1 for this project as it focuses on getting the JOS to boot by writing code for boot loader.
 
 ##### Assembly: Hello World (/example/helloworld.asm)
-This is basic assembly code that just prints "Hello World!" to the screen (See reference: Assembly Tutorial).
+I wrote this is basic assembly code that just prints "Hello World!" to the screen (See reference: Assembly Tutorial).
 
 **Commands to assemble, link and run this file (Linux only):**
 1. cd into examples folder.
@@ -104,7 +104,7 @@ This is basic assembly code that just prints "Hello World!" to the screen (See r
 
 ##### Barebone Bootloader (/example/bootloader.asm)
 
-I continue to work on the bootloader code that we wrote in our second class for COMP 340 and have developed this barebone bootloader that just prints hello world on boot.
+I continued to work on the bootloader code that we wrote in our second class for COMP 340 and have developed this barebone bootloader that just prints hello world on boot.
 
 **Problem Faced:** Understanding the code was bit of a challenge as it was bit different from what we did cover in COMP 256.
 **Solution:** OS Dev and Stack Overflow were a great reasource that really helped me understand how boot loader code worked. 
@@ -119,7 +119,7 @@ I continue to work on the bootloader code that we wrote in our second class for 
 Majority of JOS project is written in C. So there is no doubt that C is of great significance for this project.
 
 ##### C: Hello World (/example/helloworld.c)
-This is a simple Hello World application. It just prints "Hello World!" to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.
+I wrote a simple Hello World application. It just prints "Hello World!" to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.
 
 **Commands to compile and run this project (Linux Only):**
 1. cd into examples folder.
