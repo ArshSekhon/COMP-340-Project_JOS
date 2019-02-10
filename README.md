@@ -92,7 +92,7 @@ brew install qemu
 #### Assembly: NASM
 Good knowledge of assembly is required to complete Lab 1 for this project as it focuses on getting the JOS to boot by writing code for boot loader.
 
-##### Assembly: Hello World
+##### Assembly: Hello World (/example/helloworld.asm)
 This is basic assembly code that just prints "Hello World!" to the screen (See reference: Assembly Tutorial).
 
 **Commands to assemble, link and run this file (Linux only):**
@@ -102,7 +102,7 @@ This is basic assembly code that just prints "Hello World!" to the screen (See r
 4. Link the object file to create executable execute ``ld -m elf_i386 -s -o helloworld helloworld.o``
 5. Execute the executable by running ``./bin/helloworld``
 
-##### Barebone Bootloader
+##### Barebone Bootloader (/example/bootloader.asm)
 
 I continue to work on the bootloader code that we wrote in our second class for COMP 340 and have developed this barebone bootloader that just prints hello world on boot.
 
@@ -118,7 +118,7 @@ I continue to work on the bootloader code that we wrote in our second class for 
 #### C Language
 Majority of JOS project is written in C. So there is no doubt that C is of great significance for this project.
 
-##### C: Hello World
+##### C: Hello World (/example/helloworld.c)
 This is a simple Hello World application. It just prints "Hello World!" to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.
 
 **Commands to compile and run this project:**
