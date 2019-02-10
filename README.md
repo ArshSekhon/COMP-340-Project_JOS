@@ -121,7 +121,7 @@ Majority of JOS project is written in C. So there is no doubt that C is of great
 ##### C: Hello World (/example/helloworld.c)
 This is a simple Hello World application. It just prints "Hello World!" to the screen and exits. If we are able to compile and run this project then we can say that our C compiler is up and running.
 
-**Commands to compile and run this project:**
+**Commands to compile and run this project (Linux Only):**
 1. cd into examples folder.
 2. In order to compile a C file we need to execute ``gcc <fileToCompile.c> -o <outputFile.out>``. For this example program we can execute ``gcc helloworld.c -o ./bin/helloworld.out``
 3. After above command executes succesfully we can run our compiled program by just typing in name of the output file i.e. in our case just execute ``./bin/helloworld.out``
