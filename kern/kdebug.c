@@ -180,6 +180,11 @@ debuginfo_eip(uintptr_t addr, struct Eipdebuginfo *info)
 	//	which one.
 	// Your code here.
 
+	stab_binsearch(stabs, &lfun, &rfun, N_SLINE, addr - info->eip_fn_addr);
+	if (lfun <= rfun)
+    {
+        info->eip_line = stabs[lfun].n_desc;
+    }
 
 	// Search backwards from the line number for the relevant filename
 	// stab.

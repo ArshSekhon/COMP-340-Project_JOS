@@ -257,6 +257,36 @@ page_init(void)
 	// free pages!
 	size_t i;
 
+
+	for(i=1; i < npages; i++){
+		//Mark physical page 0 as in use.
+		if (i == 0) {
+            pages[i].pp_ref = 1;
+            pages[i].pp_link = NULL;
+        }
+		// add [PGSIZE, npages_basemem * PGSIZE) to free memory list
+        else if (i < npages_basemem){
+            pages[i].pp_ref = 0;
+            pages[i].pp_link = page_free_list;
+            page_free_list = &pages[i];
+        }
+		//Then comes the IO hole [IOPHYSMEM, EXTPHYSMEM), which must never be allocated.
+        else if (i >= IOPHYSMEM/PGSIZE && i < EXTPHYSMEM/PGSIZE) {
+            pages[i].pp_ref = 1;
+        }
+		// do not use memory already being used by kernel, page table and other data structures
+        else if (i >= EXTPHYSMEM/PGSIZE && i < PADDR(boot_alloc(0))/PGSIZE){
+            pages[i].pp_ref=1;
+            pages[i].pp_link = NULL;
+        }
+		// add all the remaining memory to free memory
+        else {
+            pages[i].pp_ref = 0;
+            pages[i].pp_link = page_free_list;
+            page_free_list = &pages[i];
+        }
+	} 
+ 
 	 
 }
 
