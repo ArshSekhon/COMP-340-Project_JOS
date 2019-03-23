@@ -24,6 +24,7 @@ struct Command {
 static struct Command commands[] = {
 	{ "help", "Display this list of commands", mon_help },
 	{ "kerninfo", "Display information about the kernel", mon_kerninfo },
+	{ "backtrace", "Backtrace of the function stack", mon_backtrace }
 };
 
 /***** Implementations of basic kernel monitor commands *****/
@@ -58,7 +59,8 @@ int
 mon_backtrace(int argc, char **argv, struct Trapframe *tf)
 {
     uint32_t *base_pointer;
-
+	struct Eipdebuginfo info;// required by debuginfo_eip
+	int debuginfo_return_val;
     base_pointer = (uint32_t *)read_ebp();// fetches the base pointer 
 
     cprintf("Stack backtrace:\r\n");
@@ -66,8 +68,26 @@ mon_backtrace(int argc, char **argv, struct Trapframe *tf)
     while (base_pointer)
     {
         cprintf("  ebp %08x  eip %08x  args %08x %08x %08x %08x %08x\r\n", 
-                	base_pointer, *(base_pointer+1), *(base_pointer+2), *(base_pointer+3), *(base_pointer+4), *(base_pointer+5), *(base_pointer+6)); 
-        base_pointer = (uint32_t *) *(base_pointer); //base_pointer[0](value of basepointer) (ebp) contains the address of the next stack  
+                	base_pointer, *(base_pointer+1), *(base_pointer+2), *(base_pointer+3),
+					 *(base_pointer+4), *(base_pointer+5), *(base_pointer+6)); 
+
+		// fill a block with size of Eipdebuginfo with zero in the info so that we dont get garbage
+		memset(&info, 0, sizeof(struct Eipdebuginfo)); 
+		
+        
+		debuginfo_return_val = debuginfo_eip(base_pointer[1], &info); // get debug info for address in eip 
+
+
+		if(debuginfo_return_val==0)
+        {
+            cprintf("         %s:%d: %.*s+%u\r\n", info.eip_file, info.eip_line,
+								 info.eip_fn_namelen, info.eip_fn_name, base_pointer[1] - info.eip_fn_addr);
+			 
+        } 
+		
+		//base_pointer[0](value of basepointer) (ebp) contains the address of the next stack  
+        base_pointer = (uint32_t *) *(base_pointer); 
+		
     }
 
     return 0;
