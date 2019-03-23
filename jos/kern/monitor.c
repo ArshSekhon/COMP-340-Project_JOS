@@ -57,10 +57,21 @@ mon_kerninfo(int argc, char **argv, struct Trapframe *tf)
 int
 mon_backtrace(int argc, char **argv, struct Trapframe *tf)
 {
-	// Your code here.
-	return 0;
-}
+    uint32_t *base_pointer;
 
+    base_pointer = (uint32_t *)read_ebp();// fetches the base pointer 
+
+    cprintf("Stack backtrace:\r\n");
+	
+    while (base_pointer)
+    {
+        cprintf("  ebp %08x  eip %08x  args %08x %08x %08x %08x %08x\r\n", 
+                	base_pointer, *(base_pointer+1), *(base_pointer+2), *(base_pointer+3), *(base_pointer+4), *(base_pointer+5), *(base_pointer+6)); 
+        base_pointer = (uint32_t *) *(base_pointer); //base_pointer[0](value of basepointer) (ebp) contains the address of the next stack  
+    }
+
+    return 0;
+}
 
 
 /***** Kernel monitor command interpreter *****/
