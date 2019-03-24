@@ -400,12 +400,10 @@ static void
 boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)
 {
 	// Fill this function in  
-    size_t pgCount = size / PGSIZE;    
-    if (size % PGSIZE != 0) {
-        pgCount++;
-    } 
+    size_t pgCount = ROUNDUP(size, PGSIZE)/PGSIZE;
     for (int i = 0; i < pgCount; i++) {
-        pte_t *page_table_entry = pgdir_walk(pgdir, (void *)va, 1); // create page entry if does not exist
+		// create page entry if does not exist by passing (1)
+        pte_t *page_table_entry = pgdir_walk(pgdir, (void *)va, 1); 
         if (page_table_entry == NULL) {
             panic("out of memory\n");
         }
